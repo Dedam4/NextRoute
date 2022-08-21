@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { IPost } from '../../types/IPost';
-import posts from '../api/_post/posts.json';
+import posts from './_post/posts.json';
 
 
 export default function handler(
