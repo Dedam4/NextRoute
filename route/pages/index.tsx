@@ -3,19 +3,30 @@ import styles from '../styles/Home.module.css';
 import { IPost } from '../types/IPost';
 import { useFilter } from '../hooks/useFilter';
 import { URL } from '../const/url';
+import { useState } from 'react';
 
 interface HomeProps {
   posts: IPost[];
 }
 
 const Home: NextPage<HomeProps> = ({ posts }) => {
+
+ const [filter, setFilter] = useState('');
+
   const { result } = useFilter(posts, {
     sort: "ASC",
-    filter: { name: "description", value: "" },
+    filter: { name: "description", value: filter },
   });
 
+  const handleSearch = (e) => {
+     setFilter(e.target.value)
+     
+
+  }
   return (
     <div className={styles.container}>
+
+      <input value={filter} onChange={handleSearch} />
 
       {result.length ? (
         <ul className={styles.list}>

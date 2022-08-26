@@ -8,7 +8,7 @@ export function useFilter(posts: IPost[], { sort, filter }: IOptions) {
     const resultRef = useRef<IPost[]>(posts);
 
     useMemo(() => {
-        resultRef.current = resultRef.current.filter((post) => {
+        resultRef.current = posts.filter((post) => {
             const resultFilter = post[filter.name];
     
 
